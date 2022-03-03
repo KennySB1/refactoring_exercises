@@ -1,3 +1,6 @@
 def send_email_to(user)
-  Mail.new(user.email.strip).send_message
+  make_new_email(user).send_message
+end
+def make_new_email(user)
+  return Mail.new(user.email.strip)
 end

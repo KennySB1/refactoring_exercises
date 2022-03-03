@@ -1,15 +1,26 @@
 # Understands detecting the browser type and sending the user a message
 class BrowserMessage
-  def tell_browser_type(browser)
-    safari_message = "You are using the Safari browser."
-    not_safari_message = "You are not using a Safari browser."
 
-    safari?(browser) ? puts safari_message : puts not_safari_message
+  def initialize
+    @browser_checker = BrowserChecker.new
+  end
+
+  def tell_browser_type(browser)
+    @browser_checker.safari?(browser) ? print_safari_message : print_not_safari_message
   end
 
   private
+  def print_safari_message
+    puts "You are using the Safari browser."
+  end
 
+  def print_not_safari_message
+    puts "You are not using a Safari browser."
+  end
+end
+
+class BrowserChecker
   def safari?(browser)
-    browser.type == "Safari"
+    safari?(browser)
   end
 end
